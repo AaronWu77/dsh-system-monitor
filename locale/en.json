@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "System Monitor",
+    "description": "Monitor this Windows host's CPU, memory, GPU and disks without leaving your conversation."
+  }
+}

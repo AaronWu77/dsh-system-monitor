@@ -1,0 +1,160 @@
+/* The Host owns theme selection and the accent; the monitor adds no independent palette. */
+.root {
+  --monitor-accent: var(--dsw-alias-brand-primary-new-colorprimary-new-color);
+  --monitor-surface: var(--dsw-alias-bg-layer-1);
+  --monitor-subtle: color-mix(in srgb, var(--dsw-alias-label-primary) 3%, var(--monitor-surface));
+  --monitor-line: var(--dsw-alias-border-l2);
+  --monitor-track: color-mix(in srgb, var(--dsw-alias-label-primary) 7%, transparent);
+  container-type: inline-size;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 16px;
+  color: var(--dsw-alias-label-primary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.root:focus-visible { outline: 2px solid var(--monitor-accent); outline-offset: -2px; }
+.root *, .root *::before, .root *::after { box-sizing: border-box; }
+.root h2, .root h3, .root h4, .root p, .root dl { margin: 0; }
+.root h2, .root h3, .root h4, .root strong { font-weight: 500; }
+.root strong, .metric, .chartReadout, .axisX, .axisY { font-variant-numeric: tabular-nums; }
+.tabTitle { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.heading { min-width: 0; }
+.heading h2 { font-size: 22px; letter-spacing: -.4px; line-height: 1.4; }
+.host { margin-top: 5px !important; font-size: 12px; color: var(--dsw-alias-label-secondary); overflow-wrap: anywhere; }
+.controls { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.status { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 9px 0 17px; color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.banner { margin-bottom: 14px !important; padding: 10px 12px; border: 1px solid var(--monitor-line); border-radius: 9px; background: var(--monitor-subtle); color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.empty { min-height: 200px; display: flex; justify-content: center; align-items: center; color: var(--dsw-alias-label-secondary); }
+.overview { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-bottom: 18px; }
+.metric { position: relative; isolation: isolate; text-align: left; min-width: 0; overflow: hidden; padding: 11px 12px 13px; border: 1px solid var(--monitor-line); border-radius: 11px; color: inherit; background: var(--monitor-subtle); cursor: pointer; font: inherit; }
+.metric[aria-pressed="true"] { background: color-mix(in srgb, var(--monitor-accent) 7%, var(--monitor-surface)); border-color: color-mix(in srgb, var(--monitor-accent) 45%, var(--monitor-line)); }
+.metric[aria-pressed="true"]::before { content: ''; position: absolute; top: 12px; left: 0; height: 14px; width: 2px; border-radius: 0 2px 2px 0; background: var(--monitor-accent); }
+.metricName { display: block; color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.metricValue { display: block; font-size: 27px; line-height: 1.3; letter-spacing: -.6px; margin-top: 6px; }
+.metricCaption { display: block; margin-top: 4px; font-size: 11px; color: var(--dsw-alias-label-secondary); overflow-wrap: anywhere; }
+.metricFill { position: absolute; bottom: 0; left: 0; height: 2px; background: color-mix(in srgb, var(--monitor-accent) 45%, transparent); }
+.detailLayout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
+.hero { min-width: 0; padding: 18px 20px; border: 1px solid var(--monitor-line); border-radius: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--monitor-accent) 5%, var(--monitor-surface)), var(--monitor-surface) 70%); }
+.kicker { display: flex; align-items: center; gap: 8px; color: var(--monitor-accent); font-size: 11px; margin-bottom: 12px !important; }
+.kicker::before { content: ''; width: 16px; height: 1px; background: currentColor; }
+.detailHeading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.detailHeading > div, .deviceHeading { min-width: 0; }
+.hero h3 { font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; letter-spacing: -.2px; }
+.hero h4 { font-size: 12px; overflow-wrap: anywhere; }
+.secondary { color: var(--dsw-alias-label-secondary); font-size: 12px; margin-top: 5px !important; overflow-wrap: anywhere; }
+.largeValue { color: var(--monitor-accent); font-size: 36px; line-height: 1.2; letter-spacing: -1px; white-space: nowrap; }
+.gpuHeading { display: grid; grid-template-columns: minmax(0, 1fr) 164px; gap: 12px; align-items: center; }
+.engineBadge { display: inline-block; max-width: 100%; color: var(--dsw-alias-label-secondary); font-size: 11px; border: 1px solid var(--monitor-line); border-radius: 5px; padding: 3px 7px; margin-top: 15px; overflow-wrap: anywhere; }
+.gauge { position: relative; width: 164px; height: 155px; justify-self: end; }
+.gauge svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.gaugeTrack { fill: none; stroke: var(--monitor-track); stroke-width: 11; stroke-linecap: round; }
+.gaugeTick { stroke: var(--dsw-alias-label-tertiary); stroke-width: 1; }
+.gaugeFill { fill: none; stroke: var(--monitor-accent); stroke-width: 11; stroke-linecap: round; }
+.gaugeFigure { position: absolute; top: 48px; left: 0; right: 0; display: flex; flex-direction: column; text-align: center; color: var(--dsw-alias-label-secondary); font-size: 11px; gap: 3px; }
+.gaugeValue { font-size: 35px; color: var(--dsw-alias-label-primary); line-height: 1.3; letter-spacing: -1px; }
+.memoryMeter { margin-top: 13px; padding-top: 14px; border-top: 1px solid var(--monitor-line); }
+.valueRow { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-width: 0; font-size: 12px; color: var(--dsw-alias-label-secondary); }
+.valueRow strong { color: var(--dsw-alias-label-primary); font-size: 12px; overflow-wrap: anywhere; text-align: right; }
+.segments { display: grid; grid-template-columns: repeat(32, minmax(0, 1fr)); gap: 3px; height: 8px; margin: 11px 0; }
+.segments span { min-width: 0; border-radius: 2px; background: linear-gradient(90deg, var(--monitor-accent) var(--segment-fill), var(--monitor-track) var(--segment-fill)); }
+.meterMeta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.engines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.engines > div { min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+.engineLabel { display: flex; justify-content: space-between; align-items: baseline; gap: 5px; flex-wrap: wrap; color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.engineLabel span { overflow-wrap: anywhere; min-width: 0; }
+.engineLabel strong { color: var(--dsw-alias-label-primary); }
+.bar { height: 4px; border-radius: 3px; background: var(--monitor-track); overflow: hidden; margin-top: auto; }
+.bar i { display: block; height: 100%; border-radius: 3px; background: var(--monitor-accent); }
+.otherGpus { border-top: 1px solid var(--monitor-line); margin-top: 17px; padding-top: 13px; }
+.otherGpus h4 { font-size: 11px; color: var(--dsw-alias-label-secondary); margin-bottom: 6px; }
+.deviceButton { display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 12px; padding: 8px 6px; width: 100%; min-width: 0; border: 0; border-radius: 6px; background: transparent; color: var(--dsw-alias-label-primary); font: inherit; font-size: 12px; cursor: pointer; }
+.deviceButton > span { min-width: 0; overflow-wrap: anywhere; }
+.deviceButton small { display: block; color: var(--dsw-alias-label-secondary); font-size: 11px; margin-top: 2px; }
+.deviceButton strong { font-size: 13px; white-space: nowrap; }
+.details { margin-top: 15px; font-size: 12px; }
+.details summary { cursor: pointer; color: var(--dsw-alias-label-secondary); padding: 4px 0; }
+.rows { margin-top: 9px !important; }
+.rows > div { display: flex; gap: 12px; justify-content: space-between; padding: 4px 0; }
+.rows dt { color: var(--dsw-alias-label-secondary); overflow-wrap: anywhere; }
+.rows dd { margin: 0; white-space: nowrap; }
+.notice { color: var(--dsw-alias-label-secondary); font-size: 12px; margin-top: 12px !important; }
+.matrixHeading { margin: 22px 0 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.heatLegend { display: flex; align-items: center; gap: 3px; color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.heatLegend i { width: 7px; height: 7px; border-radius: 2px; background: color-mix(in srgb, var(--monitor-accent) var(--core-tone), var(--monitor-surface)); }
+.cores { display: grid; grid-template-columns: repeat(auto-fit, minmax(57px, 1fr)); gap: 5px; }
+.core { min-width: 0; border: 1px solid color-mix(in srgb, var(--monitor-accent) 12%, var(--monitor-line)); border-radius: 5px; padding: 7px; background: color-mix(in srgb, var(--monitor-accent) var(--core-tone), var(--monitor-surface)); }
+.core span { display: block; font-size: 10px; color: var(--dsw-alias-label-secondary); overflow-wrap: anywhere; }
+.core strong { display: block; font-size: 12px; margin-top: 2px; }
+.hint { color: var(--dsw-alias-label-secondary); font-size: 11px; margin-top: 13px !important; }
+.memoryComposition { margin-top: 23px; }
+.memoryComposition .segments { height: 30px; gap: 4px; }
+.memoryFacts, .transferFacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.memoryFacts > div, .transferFacts > div { padding: 12px 14px; border: 1px solid var(--monitor-line); background: var(--monitor-surface); border-radius: 9px; min-width: 0; }
+.memoryFacts span, .transferFacts span { color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.memoryFacts strong, .transferFacts strong { display: block; font-size: 24px; line-height: 1.4; margin-top: 5px; letter-spacing: -.4px; overflow-wrap: anywhere; }
+.transferFacts strong { font-size: 23px; }
+.physicalDisks { margin-top: 18px; }
+.physicalDisks > div { padding: 12px 0; border-top: 1px solid var(--monitor-line); }
+.physicalDisks .valueRow strong { color: var(--monitor-accent); font-size: 18px; }
+.diskRates { margin-top: 5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.volumeHeading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+.volumeHeading > span { color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.volumes { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 13px; margin-top: 13px; }
+.volumes .bar { margin-top: 8px; }
+.volumes p { font-size: 11px; color: var(--dsw-alias-label-secondary); margin-top: 7px; overflow-wrap: anywhere; }
+.trend { min-width: 0; border: 1px solid var(--monitor-line); border-radius: 14px; padding: 15px 17px 11px; background: var(--monitor-surface); }
+.trendHead { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.trendHead h4 { font-size: 13px; }
+.chartReadout { color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.plotWrap { margin-top: 14px; height: 117px; position: relative; padding-right: 32px; }
+.plot { display: block; height: 92px; width: 100%; overflow: visible; color: var(--monitor-accent); }
+.chartGrid { fill: none; stroke: var(--monitor-line); stroke-width: .5; stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; }
+.trace { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.chartCursor { stroke: var(--dsw-alias-label-secondary); stroke-width: 1; stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; }
+.chartPoint { fill: var(--monitor-surface); stroke: var(--monitor-accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.chartLast { fill: var(--monitor-accent); }
+.axisY { position: absolute; top: 4px; right: 0; height: 84px; display: flex; flex-direction: column; justify-content: space-between; font-size: 11px; line-height: 1; color: var(--dsw-alias-label-secondary); }
+.axisX { position: absolute; left: 0; right: 32px; bottom: 0; display: flex; justify-content: space-between; gap: 9px; font-size: 11px; line-height: 1.2; color: var(--dsw-alias-label-secondary); }
+.chartStats { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 11px; margin-top: 11px; border-top: 1px solid var(--monitor-line); color: var(--dsw-alias-label-secondary); font-size: 11px; }
+.chartStats strong { color: var(--dsw-alias-label-primary); margin-left: 7px; }
+.legend { display: inline-flex; gap: 6px; align-items: center; }
+.legend::before { content: ''; width: 11px; height: 2px; background: var(--monitor-accent); border-radius: 2px; }
+.footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 9px; color: var(--dsw-alias-label-secondary); font-size: 11px; margin-top: 15px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.metric:focus-visible, .deviceButton:focus-visible, .details summary:focus-visible, .plot:focus-visible { outline: 2px solid var(--monitor-accent); outline-offset: 3px; }
+@media (hover: hover) {
+  .metric:hover { border-color: color-mix(in srgb, var(--monitor-accent) 30%, var(--monitor-line)); background: color-mix(in srgb, var(--monitor-accent) 4%, var(--monitor-surface)); }
+  .deviceButton:hover { background: var(--dsw-alias-interactive-bg-hover); }
+  .details summary:hover { color: var(--dsw-alias-label-primary); }
+}
+@container (max-width: 440px) {
+  .overview { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .metric { padding: 10px 12px 12px; }
+  .metricValue { font-size: 25px; margin-top: 4px; }
+  .hero { padding: 16px; }
+  .hero h3 { font-size: 17px; }
+  .gpuHeading { grid-template-columns: minmax(0, 1fr) 137px; gap: 8px; }
+  .gauge { width: 137px; height: 133px; }
+  .gaugeFigure { top: 40px; }
+  .gaugeValue { font-size: 29px; }
+  .engineBadge { margin-top: 10px; }
+  .engines { gap: 10px; }
+  .largeValue { font-size: 29px; }
+  .matrixHeading { flex-wrap: wrap; }
+  .memoryFacts, .transferFacts { gap: 9px; }
+  .memoryFacts > div, .transferFacts > div { padding: 11px; }
+  .memoryFacts strong, .transferFacts strong { font-size: 21px; }
+  .memoryComposition .segments { gap: 2px; height: 26px; }
+}
+@container (min-width: 780px) {
+  .detailLayout { grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); gap: 18px; }
+  .trend { height: 100%; }
+  .plotWrap { height: 235px; }
+  .plot { height: 210px; }
+  .axisY { height: 196px; top: 7px; }
+}

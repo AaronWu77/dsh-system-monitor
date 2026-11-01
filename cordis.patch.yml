@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-system-monitor
+      name: dsh-system-monitor
+      config: {}

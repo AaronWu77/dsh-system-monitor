@@ -1,0 +1,93 @@
+{
+  "name": "dsh-system-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Low-overhead Windows host resource monitoring in the existing DSH sidebar.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AaronWu77/dsh-SystemMonitor.git"
+  },
+  "homepage": "https://github.com/AaronWu77/dsh-SystemMonitor#readme",
+  "bugs": {
+    "url": "https://github.com/AaronWu77/dsh-SystemMonitor/issues"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": "0.2.1-rc.2"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "pnpm run typecheck && pnpm test && pnpm run build",
+    "test:artifacts": "node scripts/verify-artifacts.mjs",
+    "test:browser": "node --import tsx/esm scripts/browser-check.mjs",
+    "perf:collector": "node scripts/measure-collector.mjs",
+    "test:docs": "node --import tsx/esm scripts/check-docs.mjs"
+  },
+  "dsh": {
+    "upstreams": [],
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-resources",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/schemastery": "3.18.5"
+  },
+  "dependencies": {
+    "koffi": "3.1.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "link:../../../vendor/cordis",
+    "@deepseek-ai/schemastery": "link:../../../vendor/schemastery",
+    "@deepseek-ai/dsh-client-connection": "link:../../../packages/client/connection",
+    "@deepseek-ai/dsh-client-locale": "link:../../../packages/client/locale",
+    "@deepseek-ai/dsh-client-resources": "link:../../../packages/client/resources",
+    "@deepseek-ai/dsh-client-store": "link:../../../packages/client/store",
+    "@deepseek-ai/dsh-client-ui-primitives": "link:../../../packages/client/ui-primitives",
+    "@deepseek-ai/dsh-client-ui-renderer": "link:../../../packages/client/ui-renderer",
+    "@deepseek-ai/dsh-client-ui-sidebar-right": "link:../../../packages/client/ui-sidebar-right",
+    "@deepseek-ai/dsh-client-ui-slots": "link:../../../packages/client/ui-slots",
+    "@deepseek-ai/dsh-typert-protocol": "link:../../../packages/typert/protocol",
+    "@types/node": "^24.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "clsx": "^2.1.1",
+    "lightningcss": "1.32.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.0",
+    "vitest": "^4.0.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^28.0.0",
+    "playwright": "1.56.1",
+    "tsx": "4.23.13"
+  }
+}

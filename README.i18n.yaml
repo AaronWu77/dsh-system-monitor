@@ -1,0 +1,40 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write README.md
+/:
+  en: 3093f46a4d036fe4
+  zh: 56ec127195a16631
+/system-monitor:
+  en: 8d86b52c57a63b51
+  zh: 51eb93f93c30122a
+/system-monitor/plugin-information:
+  en: 1b38efac2fef3802
+  zh: 859149ad610e39d2
+/system-monitor/overview:
+  en: 9e070396ac15fec7
+  zh: be197a8896ea11a7
+/system-monitor/contents:
+  en: 29a5194284f0860a
+  zh: 20db58a873101bf7
+/system-monitor/use:
+  en: eedb5a76c0e6bfbd
+  zh: 75cfaace44c6054f
+/system-monitor/configuration:
+  en: 50dbd7f2dee0fb1f
+  zh: 2e33fb6561e0042e
+/system-monitor/measurements-and-resource-use:
+  en: 5c1523e8cc4295a7
+  zh: 2ca0bb59796de889
+/system-monitor/security-and-lifecycle:
+  en: b00b8d7155e71f83
+  zh: 6bbee4f3b2a71dc3
+/system-monitor/development-and-verification:
+  en: bb9e6bd3a45c7f56
+  zh: b9430f7f41d98fe2
+/system-monitor/model-experience:
+  en: 55fb75c47a7c485c
+  zh: 0af85111b13afe82
+/system-monitor/known-limitations-and-deferred-work:
+  en: cfdde7a1b58ccb79
+  zh: e93ff381fc632494
