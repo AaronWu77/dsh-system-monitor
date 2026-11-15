@@ -1,5 +1,6 @@
 {
   "name": "dsh-system-monitor",
+  "icon": "./icon.svg",
   "version": "0.1.0",
   "private": true,
   "description": "Low-overhead Windows host resource monitoring in the existing DSH sidebar.",
@@ -25,6 +26,7 @@
     "./locale/*.json": "./locale/*.json"
   },
   "files": [
+    "icon.svg",
     "lib",
     "locale/*.json",
     "cordis.patch.yml",
