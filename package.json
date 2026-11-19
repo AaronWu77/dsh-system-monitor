@@ -42,7 +42,8 @@
     "test:artifacts": "node scripts/verify-artifacts.mjs",
     "test:browser": "node --import tsx/esm scripts/browser-check.mjs",
     "perf:collector": "node scripts/measure-collector.mjs",
-    "test:docs": "node --import tsx/esm scripts/check-docs.mjs"
+    "test:docs": "node --import tsx/esm scripts/check-docs.mjs",
+    "prepack": "pnpm run build"
   },
   "dsh": {
     "upstreams": [],
