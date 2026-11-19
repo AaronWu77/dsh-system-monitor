@@ -3,7 +3,7 @@
   "icon": "./icon.svg",
   "version": "0.1.0",
   "private": true,
-  "description": "Low-overhead Windows host resource monitoring in the existing DSH sidebar.",
+  "description": "View local CPU, memory, GPU and disk usage in the sidebar",
   "type": "module",
   "license": "MIT",
   "repository": {

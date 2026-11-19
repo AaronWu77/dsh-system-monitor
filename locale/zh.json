@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "本机资源",
-    "description": "在现有侧栏查看本机 CPU、内存、GPU 和磁盘，按需采集，不占用新的常驻区域。"
+    "title": "系统监控",
+    "description": "在侧边栏查看本机 CPU、内存、GPU 与磁盘用量"
   }
 }
